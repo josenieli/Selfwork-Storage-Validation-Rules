@@ -17,6 +17,9 @@
         <li class="nav-item">
           <a class="nav-link" href="/risultati">Risultati</a>
         </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/contattaci">Contattaci</a>
+        </li>
       </ul>
     </div>
   </div>

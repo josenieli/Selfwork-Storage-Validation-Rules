@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\controllers\PublicController;
 use App\Http\controllers\RisultatiController;
 
+
 Route::get('/', [PublicController::class, 'homepage'])->name('Homepage');
 
 Route::get('/chisiamo',[PublicController::class, 'chisiamo'])->name('chisiamo');
@@ -18,3 +19,9 @@ Route::get('/servizi', function(){
 Route::get('/risultati', [RisultatiController::class, 'risultati']);
 
 Route::get('/risultati/detail/{id}', [RisultatiController::class, 'listaRisultati'])->name('risultati.detail');
+
+Route::get('/contattaci', [PublicController::class, 'contatta'])->name('contatta.us');
+
+Route::post('/contattaci/submit', [PublicController::class, 'submit'])->name('contact.submit');
+
+Route::get('/thank-you',[PublicController::class, 'thankYou'])->name('thankYou');
