@@ -49,4 +49,5 @@ class PublicController extends Controller
         return redirect()->route('thankYou');
         }
 
+
 }

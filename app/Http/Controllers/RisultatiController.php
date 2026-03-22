@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Calcio;
 use Illuminate\Http\Request;
 
 class RisultatiController extends Controller
@@ -24,5 +25,25 @@ class RisultatiController extends Controller
         }
     }
 }
+    public function create(){
+        return view('risultati.create');
+    }
+    
+    public function store(Request $request){
+        $risultato = Calcio::create([
+            'titolo' => $request->titolo,
+            'marcatori' => $request->marcatori,
+            'giornata' => $request->giornata,
+            'riassunto' => $request->riassunto
+        ]);
+
+
+        return redirect()->route('homepage')->with('successMessage', 'Hai correttamente inserito il tuo risultato');
+    }
+
+    public function risultatiAttesi(){
+        $risultati = Calcio::all();
+        return view('risultati.risultatiAttesi', ['risultati'=>$risultati]);
+    }
 
 }
