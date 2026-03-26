@@ -22,6 +22,9 @@
                     <a class="nav-link" href="{{ route('risultati.risultatiAttesi') }}">Risultati Attesi</a>
                 </li>
                 <li class="nav-item">
+                    <a class="nav-link" href="{{route('risultati.create')}}">Crea il tuo risultato </a>
+                </li>
+                <li class="nav-item">
                     <a class="nav-link" href="/contattaci">Contattaci</a>
                 </li>
             </ul>
