@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\CalcioRequest;
 use App\Models\Calcio;
 use Illuminate\Http\Request;
 
@@ -29,12 +30,13 @@ class RisultatiController extends Controller
         return view('risultati.create');
     }
     
-    public function store(Request $request){
+    public function store(CalcioRequest $request){
         $risultato = Calcio::create([
             'titolo' => $request->titolo,
             'marcatori' => $request->marcatori,
             'giornata' => $request->giornata,
-            'riassunto' => $request->riassunto
+            'riassunto' => $request->riassunto,
+            'img'=>$request->file('img')->store('img', 'public')
         ]);
 
 
