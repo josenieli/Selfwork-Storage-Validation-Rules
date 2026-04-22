@@ -3,8 +3,8 @@
 namespace App\Http\Controllers;
 
 
-use App\Http\Requests\NewsRequest;
-use App\Models\News;
+use App\Http\Requests\ResultsRequest;
+use App\Models\Results;
 use Illuminate\Http\Request;
 
 class RisultatiController extends Controller
@@ -31,8 +31,8 @@ class RisultatiController extends Controller
         return view('risultati.create');
     }
     
-    public function store(NewsRequest $request){
-        $risultato = News::create([
+    public function store(ResultsRequest  $request){
+        $risultato = Results::create([
             'titolo' => $request->titolo,
             'marcatori' => $request->marcatori,
             'giornata' => $request->giornata,
@@ -45,7 +45,7 @@ class RisultatiController extends Controller
     }
 
     public function risultatiAttesi(){
-        $risultati = News::all();
+        $risultati = Results::all();
         return view('risultati.risultatiAttesi', ['risultati'=>$risultati]);
     }
 
