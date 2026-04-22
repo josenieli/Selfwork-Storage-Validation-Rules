@@ -2,8 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\CalcioRequest;
-use App\Models\Calcio;
+
+use App\Http\Requests\NewsRequest;
+use App\Models\News;
 use Illuminate\Http\Request;
 
 class RisultatiController extends Controller
@@ -30,8 +31,8 @@ class RisultatiController extends Controller
         return view('risultati.create');
     }
     
-    public function store(CalcioRequest $request){
-        $risultato = Calcio::create([
+    public function store(NewsRequest $request){
+        $risultato = News::create([
             'titolo' => $request->titolo,
             'marcatori' => $request->marcatori,
             'giornata' => $request->giornata,
@@ -44,7 +45,7 @@ class RisultatiController extends Controller
     }
 
     public function risultatiAttesi(){
-        $risultati = Calcio::all();
+        $risultati = News::all();
         return view('risultati.risultatiAttesi', ['risultati'=>$risultati]);
     }
 
