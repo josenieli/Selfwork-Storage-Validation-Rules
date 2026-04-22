@@ -11,13 +11,8 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('calcios', function (Blueprint $table) {
-            $table->id();
-            $table->string('titolo');
-            $table->string('marcatori');
-            $table->string('giornata');
-            $table->longtext('riassunto');
-            $table->timestamps();
+        Schema::table('results', function (Blueprint $table) {
+            $table->string('img')->after('riassunto');
         });
     }
 
@@ -26,6 +21,8 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('risultati');
+        Schema::table('results', function (Blueprint $table) {
+            $table->dropColumn('img');
+        });
     }
 };
