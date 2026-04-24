@@ -31,18 +31,24 @@ class RisultatiController extends Controller
         return view('risultati.create');
     }
     
-    public function store(ResultsRequest  $request){
-        $risultato = Results::create([
-            'titolo' => $request->titolo,
-            'marcatori' => $request->marcatori,
-            'giornata' => $request->giornata,
-            'riassunto' => $request->riassunto,
-            'img'=>$request->file('img')->store('img', 'public')
-        ]);
+public function store(ResultsRequest $request)
+{
+    $data = [
+        'titolo' => $request->titolo,
+        'marcatori' => $request->marcatori,
+        'giornata' => $request->giornata,
+        'riassunto' => $request->riassunto,
+        'img' => null,
+    ];
 
-
-        return redirect()->route('homepage')->with('successMessage', 'Hai correttamente inserito il tuo risultato');
+    if ($request->hasFile('img')) {
+        $data['img'] = $request->file('img')->store('img', 'public');
     }
+
+    $risultato = Results::create($data);
+
+    return redirect()->route('homepage')->with('successMessage', 'Hai correttamente inserito il tuo risultato');
+}
 
     public function risultatiAttesi(){
         $risultati = Results::all();
